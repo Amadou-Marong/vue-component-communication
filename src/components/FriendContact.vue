@@ -18,12 +18,30 @@
 
 <script>
 export default {
-  props: [
-    'name', 
-    'phoneNumber', 
-    'emailAddress', 
-    'isFavorite'
-  ],
+  // props: ['name', 'phoneNumber', 'emailAddress', 'isFavorite'],
+  // props: {name: String, phoneNumber: String, emailAddress: String, isFavorite: String,},
+  props: {
+    name: {
+      type: String,
+      required: true
+    },
+    phoneNumber: {
+      type: String,
+      required: true
+    },
+    emailAddress: {
+      type: String,
+      required: true
+    },
+    isFavorite: {
+      type: String,
+      required: false,
+      default: '0',   // can also be a function that returns the default value
+      validator: function(value) {     // validator is a function that returns true or false if the value is valid or not
+        return value === '0' || value === '1';
+      }
+    } 
+  },
   data() {
     return {
       detailsAreVisible: false,
